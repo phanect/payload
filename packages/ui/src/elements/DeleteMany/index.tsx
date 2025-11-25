@@ -38,7 +38,10 @@ export type Props = {
 
 export const DeleteMany: React.FC<Props> = (props) => {
   const { viewType } = props
-  const { collection: { slug, trash } = {}, modalPrefix } = props
+  const {
+    collection: { slug, trash },
+    modalPrefix,
+  } = props
 
   const { permissions } = useAuth()
   const { count, selectAll, selectedIDs, toggleAll } = useSelection()

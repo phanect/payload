@@ -212,7 +212,7 @@ export function DefaultListView(props: ListViewClientProps) {
                   </p>
                   {hasCreatePermission && newDocumentURL && viewType !== 'trash' && (
                     <Fragment>
-                      {isInDrawer ? (
+                      {isInDrawer && createNewDrawerSlug ? (
                         <Button el="button" onClick={() => openModal(createNewDrawerSlug)}>
                           {i18n.t('general:createNewLabel', {
                             label: getTranslation(labels?.singular, i18n),

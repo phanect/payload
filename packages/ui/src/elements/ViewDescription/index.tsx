@@ -14,7 +14,7 @@ export function isComponent(description: Description): description is ViewDescri
   return React.isValidElement(description)
 }
 
-export function ViewDescription(props: ViewDescriptionClientProps) {
+export function ViewDescription(props: Partial<ViewDescriptionClientProps>) {
   const { i18n } = useTranslation()
   const { description } = props
 

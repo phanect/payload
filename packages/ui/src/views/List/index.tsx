@@ -101,14 +101,16 @@ export function DefaultListView(props: ListViewClientProps) {
 
   const docs = React.useMemo(() => {
     if (isUploadCollection) {
-      return data.docs.map((doc) => {
-        return {
-          ...doc,
-          filesize: formatFilesize(doc.filesize),
-        }
-      })
+      return (
+        data?.docs.map((doc) => {
+          return {
+            ...doc,
+            filesize: formatFilesize(doc.filesize),
+          }
+        }) ?? []
+      )
     } else {
-      return data?.docs
+      return data?.docs ?? []
     }
   }, [data?.docs, isUploadCollection])
 
@@ -196,12 +198,12 @@ export function DefaultListView(props: ListViewClientProps) {
                 resolvedFilterOptions={resolvedFilterOptions}
               />
               {BeforeListTable}
-              {docs?.length > 0 && (
+              {docs.length > 0 && (
                 <div className={`${baseClass}__tables`}>
                   <RelationshipProvider>{Table}</RelationshipProvider>
                 </div>
               )}
-              {docs?.length === 0 && (
+              {docs.length === 0 && (
                 <div className={`${baseClass}__no-results`}>
                   <p>
                     {i18n.t(viewType === 'trash' ? 'general:noTrashResults' : 'general:noResults', {
@@ -228,7 +230,7 @@ export function DefaultListView(props: ListViewClientProps) {
                 </div>
               )}
               {AfterListTable}
-              {docs?.length > 0 && !isGroupingBy && (
+              {docs.length > 0 && !isGroupingBy && (
                 <PageControls
                   AfterPageControls={
                     smallBreak ? (
@@ -261,7 +263,7 @@ export function DefaultListView(props: ListViewClientProps) {
           </SelectionProvider>
         </div>
       </TableColumnsProvider>
-      {docs?.length > 0 && isGroupingBy && data.totalPages > 1 && (
+      {docs.length > 0 && isGroupingBy && data.totalPages > 1 && (
         <StickyToolbar>
           <PageControls collectionConfig={collectionConfig} />
         </StickyToolbar>

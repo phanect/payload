@@ -87,7 +87,7 @@ export function DefaultListView(props: ListViewClientProps) {
 
   const isUploadCollection = Boolean(upload)
 
-  const isBulkUploadEnabled = isUploadCollection && collectionConfig.upload.bulkUpload
+  const isBulkUploadEnabled = isUploadCollection && !!collectionConfig.upload.bulkUpload
 
   const isTrashEnabled = Boolean(collectionConfig.trash)
 
@@ -96,7 +96,7 @@ export function DefaultListView(props: ListViewClientProps) {
   const { setStepNav } = useStepNav()
 
   const {
-    breakpoints: { s: smallBreak },
+    breakpoints: { s: smallBreak = false },
   } = useWindowInfo()
 
   const docs = React.useMemo(() => {

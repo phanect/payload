@@ -148,7 +148,7 @@ export function DefaultListView(props: ListViewClientProps) {
     <Fragment>
       <TableColumnsProvider collectionSlug={collectionSlug} columnState={columnState}>
         <div className={`${baseClass} ${baseClass}--${collectionSlug}`}>
-          <SelectionProvider docs={docs} totalDocs={data?.totalDocs}>
+          <SelectionProvider docs={docs} totalDocs={data?.totalDocs ?? 0}>
             {BeforeList}
             <Gutter className={`${baseClass}__wrap`}>
               <CollectionListHeader
@@ -263,7 +263,7 @@ export function DefaultListView(props: ListViewClientProps) {
           </SelectionProvider>
         </div>
       </TableColumnsProvider>
-      {docs.length > 0 && isGroupingBy && data.totalPages > 1 && (
+      {docs.length > 0 && isGroupingBy && (data?.totalPages ?? 0) > 1 && (
         <StickyToolbar>
           <PageControls collectionConfig={collectionConfig} />
         </StickyToolbar>

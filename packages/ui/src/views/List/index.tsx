@@ -2,6 +2,7 @@
 
 import type { ListViewClientProps } from 'payload'
 
+import { useWindowInfo } from '@faceless-ui/window-info'
 import { getTranslation } from '@payloadcms/translations'
 import { useRouter } from 'next/navigation.js'
 import { formatAdminURL, formatFilesize } from 'payload/shared'
@@ -26,7 +27,6 @@ import { useListQuery } from '../../providers/ListQuery/index.js'
 import { SelectionProvider } from '../../providers/Selection/index.js'
 import { TableColumnsProvider } from '../../providers/TableColumns/index.js'
 import { useTranslation } from '../../providers/Translation/index.js'
-import { useWindowInfo } from '../../providers/WindowInfo/index.js'
 import { ListSelection } from '../../views/List/ListSelection/index.js'
 import { CollectionListHeader } from './ListHeader/index.js'
 import './index.scss'
